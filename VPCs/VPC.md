@@ -10,3 +10,12 @@ CIDR Block - Range of IP Addresses
 
 - NACL - Network Access Control List
 - Essentially a security group for the subnet
+
+## VPC Creation Steps
+
+1) Create a VPC
+2) Make two Subnets (Public and Private)
+3a) Create Internet Gateway
+3b) Attach Internet Gateway to VPC
+4) Make a Public Route Table
+5) Associate Route Table to the Public Subnet

@@ -34,7 +34,7 @@ tech254-alex-2tier-first-vpc
 - Put "IPv4 subnet CIDR block" as `10.0.3.0/24`.
 7) Click `Create Subnet`.
 
-###) 3) Creating Internet Gateway
+### 3) Creating Internet Gateway
 
 1) On the AWS console, go to the VPC page.
 2) On the left hand pane, under "Virtual Private Cloud", Click on `Internet gateways`.
@@ -45,7 +45,7 @@ tech254-alex-2tier-first-vpc
 7) Search for the VPC you made and click it.
 8) Click `Attach Internet gateway`.
 
-###) 3) Creating Route Table
+### 3) Creating Route Table
 
 1) On the AWS console, go to the VPC page.
 2) On the left hand pane, under "Virtual Private Cloud", Click on `Route tables`.
@@ -71,10 +71,15 @@ tech254-alex-2tier-first-vpc
 - For "Destination", choose `0.0.0.0/0`
 - For "Target", choose `Internet Gateway`, then select the Internet gateway you made from the dropdown list that follows.
 
-### 6)
+### 6) Check the VPC pathway
 
 1) Go onto your VPC details page and check the resource map is following the correct path for each subnet.
 ![Alt text](<../images/Screenshot 2023-10-10 092826.jpg>)
+
+7) Make a database instance
+
+1) Go into EC2 and go to the launch instance page OR go to AMIs and choose the AMI you made for the database.
+2) Name your instance.
 
 ## Cleaning up
 

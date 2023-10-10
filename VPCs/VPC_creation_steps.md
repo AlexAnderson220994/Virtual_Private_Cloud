@@ -32,9 +32,49 @@ tech254-alex-2tier-first-vpc
 - Name it `private-subnet`.
 - Put it in "Availability Zone" `eu-west-1b`.
 - Put "IPv4 subnet CIDR block" as `10.0.3.0/24`.
+7) Click `Create Subnet`.
 
-###) Creating
+###) 3) Creating Internet Gateway
 
+1) On the AWS console, go to the VPC page.
+2) On the left hand pane, under "Virtual Private Cloud", Click on `Internet gateways`.
+3) In the top right hand corner, click on `Create Internet gateway`.
+4) Name the gateway. e.g. `tech254-alex-2tier-first-vpc-ig`.
+5) Click `Create Internet gateway`.
+6) On the "Details" page of the Internet gateway you just made, go to `Actions`, then click `Attach to VPC`.
+7) Search for the VPC you made and click it.
+8) Click `Attach Internet gateway`.
+
+###) 3) Creating Route Table
+
+1) On the AWS console, go to the VPC page.
+2) On the left hand pane, under "Virtual Private Cloud", Click on `Route tables`.
+3) In the top right hand corner, click on `Create route table`.
+4) Name it `public-rt`.
+5) From the VPC dropdown, select the VPC you made.
+6) Click `Create route table`.
+
+### 4) Subnet associations
+
+1) On the details page for the Route table you just made, click on the "Subnet associations" tab.
+![Alt text](<../images/route table details.jpg>)
+2) Under "Explicit subnet associations", click on `Edit subnet associations`.
+3) Click the tick box next to `public-subnet`.
+4) Click `Save associations`.
+
+### 5) Editing Route table
+
+1) On the details page for the Route table you just made, click on the "Route" tab.
+![Alt text](<../images/Screenshot 2023-10-10 092041.jpg>)
+2) Click on `Edit routes`.
+3) Click on `Add route`:
+- For "Destination", choose `0.0.0.0/0`
+- For "Target", choose `Internet Gateway`, then select the Internet gateway you made from the dropdown list that follows.
+
+### 6)
+
+1) Go onto your VPC details page and check the resource map is following the correct path for each subnet.
+![Alt text](<../images/Screenshot 2023-10-10 092826.jpg>)
 
 ## Cleaning up
 

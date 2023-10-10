@@ -76,10 +76,59 @@ tech254-alex-2tier-first-vpc
 1) Go onto your VPC details page and check the resource map is following the correct path for each subnet.
 ![Alt text](<../images/Screenshot 2023-10-10 092826.jpg>)
 
-7) Make a database instance
+### 7) Make a database instance
 
 1) Go into EC2 and go to the launch instance page OR go to AMIs and choose the AMI you made for the database.
-2) Name your instance.
+2) Name your instance. e.g. `tech254_alex_db_test_second_vpc`.
+3) Keep the same instance type and key pair login you normally use.
+4) Under "Network Settings":
+- Select `edit`
+- Under "VPC", choose your VPC you made earlier
+- Under "Subnet", choose the `private-subnet` you made earlier
+- **DISABLE** "Auto-assign public IP"
+![Alt text](<../images/network settings db instance.jpg>)
+5) For the "Security group":
+- Create (or use previously made) security group to allow the following:
+- SSH, Port 22, anywhere
+- MongoDB- Port 27017, anywhere
+6) Click `Launch Instance`.
+
+### 8) Make an app instance
+
+1) Go into EC2 and go to the launch instance page OR go to AMIs and choose the AMI you made for the database.
+2) Name your instance. e.g. `tech254_alex_app_test_second_vpc`.
+3) Keep the same instance type and key pair login you normally use.
+4) Under "Network Settings":
+- Select `edit`
+- Under "VPC", choose your VPC you made earlier
+- Under "Subnet", choose the `public-subnet` you made earlier
+- **ENABLE** "Auto-assign public IP"
+5) For the "Security group":
+- Create (or use previously made) security group to allow the following:
+- SSH, Port 22, anywhere
+- HTTP, Port 80, anywhere
+- App, Port 300, anywhere
+6) Add the user data to seed the database and run the app:
+````
+#!/bin/bash
+
+export DB_HOST=mongodb://<public/private_IP_of_DB_instance>:27017/posts
+
+cd /home/ubuntu/repo/app
+sudo systemctl restart nginx
+npm install
+
+node seeds/seed.js
+
+sudo npm install pm2 -g
+pm2 kill
+pm2 start app.js
+````
+- Make sure to change <public/private_IP_of_DB_instance> to the private IP of your database
+![Alt text](<../images/app user data.jpg>)
+7) Click `Launch Instance`.
 
 ## Cleaning up
 
+- Go to your VPC details and click on `Delete VPC`.
+- All associations will be deleted alongside this.

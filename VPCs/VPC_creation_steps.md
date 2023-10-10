@@ -1,5 +1,9 @@
 # VPC Creation
 
+## VPC Diagram
+
+![Alt text](<../images/VPC diagram.jpg>)
+
 ## VPC, Subnet, Internet Gateway and Route Table creation process
 
 ### 1) Creating a VPC

@@ -18,6 +18,8 @@ tech254-alex-2tier-first-vpc
 ````
 7) Click `Create VPC`.
 
+![Alt text](<../images/vpc create.jpg>)
+
 ### 2) Creating Subnets
 
 1) On the AWS console, go to the VPC page.
@@ -33,17 +35,19 @@ tech254-alex-2tier-first-vpc
 - Put it in "Availability Zone" `eu-west-1b`.
 - Put "IPv4 subnet CIDR block" as `10.0.3.0/24`.
 7) Click `Create Subnet`.
+![Alt text](<../images/public subnet.jpg>)
 
 ### 3) Creating Internet Gateway
 
 1) On the AWS console, go to the VPC page.
 2) On the left hand pane, under "Virtual Private Cloud", Click on `Internet gateways`.
 3) In the top right hand corner, click on `Create Internet gateway`.
-4) Name the gateway. e.g. `tech254-alex-2tier-first-vpc-ig`.
+4) Name the gateway. e.g. `tech254-alex-2tier-second-vpc-ig`.
 5) Click `Create Internet gateway`.
 6) On the "Details" page of the Internet gateway you just made, go to `Actions`, then click `Attach to VPC`.
 7) Search for the VPC you made and click it.
 8) Click `Attach Internet gateway`.
+![Alt text](<../images/internet gateway.jpg>)
 
 ### 3) Creating Route Table
 
@@ -53,6 +57,7 @@ tech254-alex-2tier-first-vpc
 4) Name it `public-rt`.
 5) From the VPC dropdown, select the VPC you made.
 6) Click `Create route table`.
+![Alt text](<../images/route table.jpg>)
 
 ### 4) Subnet associations
 
